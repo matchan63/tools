@@ -1,0 +1,16 @@
+R1,10.1.1.251,Fa1,connected,1,a-full,a-100,Unknown
+R1,10.1.1.251,Fa2,disabled,1,auto,auto,Unknown
+R1,10.1.1.251,Fa3,disabled,1,auto,auto,Unknown
+R1,10.1.1.251,Fa4,disabled,1,auto,auto,Unknown
+R1,10.1.1.251,Fa5,disabled,1,auto,auto,Unknown
+R1,10.1.1.251,Fa6,disabled,1,auto,auto,Unknown
+R1,10.1.1.251,Fa7,disabled,1,auto,auto,Unknown
+R1,10.1.1.251,Fa8,disabled,1,auto,auto,Unknown
+R2,10.5.5.1,Fa2,disabled,1,auto,auto,10/100BaseTX
+R2,10.5.5.1,Fa3,disabled,1,auto,auto,10/100BaseTX
+R2,10.5.5.1,Fa4,disabled,1,auto,auto,10/100BaseTX
+R2,10.5.5.1,Fa5,disabled,1,auto,auto,10/100BaseTX
+R2,10.5.5.1,Fa6,disabled,1,auto,auto,10/100BaseTX
+R2,10.5.5.1,Fa7,disabled,1,auto,auto,10/100BaseTX
+R2,10.5.5.1,Fa8,disabled,1,auto,auto,10/100BaseTX
+R2,10.5.5.1,Fa9,notconnect,1,auto,auto,10/100BaseTX

@@ -1,3 +1,4 @@
-R1,10.1.1.251
-Cloud,172.16.1.2
-R2,10.5.5.1
+R1.matchan.net,10.1.1.251
+Cloud.matchan.net,172.16.1.2
+R2.matchan.net,172.16.1.5
+ALS2.matchan.net,10.5.5.10

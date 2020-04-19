@@ -1,0 +1,8 @@
+R1,10.1.1.251,FastEthernet0,172.16.1.1,YES,NVRAM,up,up
+R1,10.1.1.251,Tunnel0,192.168.1.1,YES,NVRAM,up,up
+R1,10.1.1.251,Vlan1,10.1.1.251,YES,NVRAM,up,up
+Cloud,172.16.1.2,FastEthernet0/0,172.16.1.2,YES,NVRAM,up,up
+Cloud,172.16.1.2,FastEthernet0/1,172.16.1.6,YES,NVRAM,up,up
+R2,10.5.5.1,FastEthernet0,172.16.1.5,YES,NVRAM,up,up
+R2,10.5.5.1,Tunnel0,192.168.1.2,YES,NVRAM,up,up
+R2,10.5.5.1,Loopback0,10.5.5.1,YES,NVRAM,up,up
