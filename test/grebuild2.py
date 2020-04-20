@@ -20,40 +20,38 @@
 '''
 from netmiko import ConnectHandler
 from getpass import getpass
+import re
 
-dev1  = {'ip'          : '',
-         'device_type' : 'cisco_ios',
-         'username'    : 'admin',
-         'password'    : ''
+#get tunnel and device info
+with open("tunnel.txt") as infile:
+    output = infile.read().splitlines()
+
+password = getpass()
+
+#build device login profiles
+dev1  = {'ip'          : re.search(r"^.*:(.*)", output[1]).group(1),
+         'device_type' : re.search(r"^.*:(.*)", output[2]).group(1),
+         'username'    : re.search(r"^.*:(.*)", output[0]).group(1),
+         'password'    : password
           }
 
-dev2  = {'ip'          : '',
-         'device_type' : 'cisco_ios',
-         'username'    : 'admin',
-         'password'    : ''
+dev2  = {'ip'          : re.search(r"^.*:(.*)", output[5]).group(1),
+         'device_type' : re.search(r"^.*:(.*)", output[6]).group(1),
+         'username'    : re.search(r"^.*:(.*)", output[0]).group(1),
+         'password'    : password
           }
-
-dev1['ip'] = input("IP address or FQDN for device1 (tunnel 'A' end): ")
-tunnel_a_addr = input("IP address of 'A' end tunnel interface: ")
-tunnel_a_subnet = input("Subnet and mask of 'A' end tunnel interface: ")
-dev2['ip'] = input("IP address or FQDN for device2 (tunnel 'B' end): ")
-tunnel_b_addr = input("IP address of 'B' end tunnel interface: ")
-tunnel_b_subnet = input("Subnet and mask of 'B' end tunnel interface: ")
-
-dev1['password'] = getpass()
-dev2['password'] = dev1['password']
 
 connection = ConnectHandler(**dev1)
 print("Building 'A' end....")
 
 cmd = ['interface tunnel0',
-       'ip address ' + tunnel_a_addr + ' 255.255.255.0',
-       'tunnel source ' + dev1['ip'],
-       'tunnel destination ' + dev2['ip'], 'exit',
-       'ip route ' + tunnel_b_subnet + ' tunnel0']
-output = connection.send_config_set(cmd)
+       'ip address ' + re.search(r"^.*:(.*)", output[3]).group(1),
+       'tunnel source ' + re.search(r"^.*:(.*)", output[1]).group(1),
+       'tunnel destination ' + re.search(r"^.*:(.*)", output[5]).group(1),
+       'ip route ' + re.search(r"^.*:(.*)", output[8]).group(1) + ' tunnel0']
+result = connection.send_config_set(cmd)
 print("-" * 80)
-print(output)
+print(result)
 print("-" * 80)
 
 connection.disconnect()
@@ -63,13 +61,13 @@ connection = ConnectHandler(**dev2)
 print("Building 'B' end....")
 
 cmd = ['interface tunnel0',
-       'ip address ' + tunnel_b_addr + ' 255.255.255.0',
-       'tunnel source ' + dev2['ip'],
-       'tunnel destination ' + dev1['ip'], 'exit',
-       'ip route ' + tunnel_a_subnet + ' tunnel0']
-output = connection.send_config_set(cmd)
+       'ip address ' + re.search(r"^.*:(.*)", output[7]).group(1),
+       'tunnel source ' + re.search(r"^.*:(.*)", output[5]).group(1),
+       'tunnel destination ' + re.search(r"^.*:(.*)", output[1]).group(1),
+       'ip route ' + re.search(r"^.*:(.*)", output[4]).group(1) + ' tunnel0']
+result = connection.send_config_set(cmd)
 print("-" * 80)
-print(output)
+print(result)
 print("-" * 80)
 
 connection.disconnect()
