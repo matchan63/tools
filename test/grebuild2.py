@@ -22,8 +22,11 @@ from netmiko import ConnectHandler
 from getpass import getpass
 import re
 
+def file_template():
+    return
+
 #get tunnel and device info
-with open("tunnel.txt") as infile:
+with open("tunnel1.txt") as infile:
     output = infile.read().splitlines()
 
 password = getpass()
