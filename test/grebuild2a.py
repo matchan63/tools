@@ -41,9 +41,10 @@ def file_template():
 def build_parameters():
 #build dictionary of input parameters
     for line in output:
-        if re.search(r"^.", line) != "#":
+        if line[0] != "#":
             i = re.search(r"(^.*):(.*)", line)
             inputs[i.group(1)] = i.group(2)
+#    pdb.set_trace()
 
 def tunnel_gre():
 #build device login profiles
