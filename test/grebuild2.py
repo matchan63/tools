@@ -24,6 +24,20 @@ import re
 import pdb
 
 def file_template():
+    f = open("tunnel_template.txt", mode="w")
+    f.write("tunnel_type:gre|ipsec\n")
+    f.write("username:admin\n")
+    f.write("device1:172.16.1.1\n")
+    f.write("device1_type:cisco_ios\n")
+    f.write("device1_tunnel_ip:10.254.254.1 255.255.255.252\n")
+    f.write("device1_subnet:10.1.1.0 255.255.255.0\n")
+    f.write("device2:172.16.1.5\n")
+    f.write("device2_type:cisco_ios\n")
+    f.write("device2_tunnel_ip:10.254.254.2 255.255.255.252\n")
+    f.write("device2_subnet:10.5.5.0 255.255.255.0\n")
+    f.close()
+
+    print("File does not exist, file 'tunnel_template.txt' created...")
     return
 
 def tunnel_gre():
@@ -81,7 +95,7 @@ def tunnel_ipsec():
 
 #get tunnel and device info
 try:
-    with open("tunnel.txt") as infile:
+    with open("tunnel1.txt") as infile:
         output = infile.read().splitlines()
     if 'tunnel_type:gre' in output:
         tunnel_gre()
@@ -95,5 +109,4 @@ try:
         on DevA and DevB''')
 
 except FileNotFoundError:
-    print("File does not exist, template file created...")
-    exit()
+    file_template()

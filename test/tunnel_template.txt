@@ -1,0 +1,10 @@
+tunnel_type:gre|ipsec
+username:admin
+device1:172.16.1.1
+device1_type:cisco_ios
+device1_tunnel_ip:10.254.254.1 255.255.255.252
+device1_subnet:10.1.1.0 255.255.255.0
+device2:172.16.1.5
+device2_type:cisco_ios
+device2_tunnel_ip:10.254.254.2 255.255.255.252
+device2_subnet:10.5.5.0 255.255.255.0
