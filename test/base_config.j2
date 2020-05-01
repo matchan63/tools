@@ -1,0 +1,10 @@
+{%- for interf, value in active_interfaces.items() %}
+interface {{ interf }}
+  switchport mode {{ active_interfaces[interf]['mode'] }}
+  {%- if active_interfaces[interf]['mode'] == 'access' %}
+  switchport access vlan {{ active_interfaces[interf]['vlan'] }}
+  {%- elif active_interfaces[interf]['mode'] == 'trunk' %}
+  switchport trunk native vlan {{ active_interfaces[interf]['native_vlan'] }}
+  switchport trunk allowed vlan {{ active_interfaces[interf]['trunk_vlans'] }}
+  {%- endif %}
+{%- endfor %}

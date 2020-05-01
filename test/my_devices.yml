@@ -1,0 +1,18 @@
+---
+rtr1:
+  ip_addr: 10.1.1.1
+  username: admin
+  password: whatever
+  device_type: juniper_junos
+  bgp_peers:
+    - 192.168.1.1
+    - 192.168.2.1
+    - 192.168.3.1
+    - 192.168.4.1
+rtr2:
+  ip_addr: 10.1.10.1
+  username: admin
+  password: whatever
+  device_type: cisco_nxos
+  bgp_peers: [172.16.21.1, 172.30.55.254]
+rtr3: {ip_addr: 10.1.20.1}
