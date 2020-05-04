@@ -1,10 +1,9 @@
-hostname {{ hostname }}
 aaa new-model
 aaa authentication login MYLIST group radius local
 line vty 0 4
  logging synchronous
  login authentication MYLIST
  transport input ssh
-{%- for radius-host, value in radius_servers %}
-radius-server host {{ radius-host }} auth-port 1812 acct-port 1813 key {{ passwd }}
+{%- for radius_host in radius_servers %}
+radius-server host {{ radius_host }} auth-port 1812 acct-port 1813 key {{ passwd }}
 {%- endfor %}
