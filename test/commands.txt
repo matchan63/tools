@@ -1,0 +1,12 @@
+no ip domain-lookup
+ip domain-name customer.com
+aaa new-model
+aaa authentication login MYLIST group radius local
+line vty 0 4
+ logging synchronous
+ login authentication MYLIST
+ transport input ssh
+ exit
+radius-server host 10.1.1.250 auth-port 1812 acct-port 1813 key gofish21
+radius-server host 10.1.1.252 auth-port 1812 acct-port 1813 key gofish21
+radius-server host 10.1.1.253 auth-port 1812 acct-port 1813 key gofish21

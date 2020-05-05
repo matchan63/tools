@@ -1,6 +1,14 @@
 ---
+domain: customer.com
+motd:
+  - '***************************************************************'
+  - 'this is a really long message aboug conditions of use etc etc'
+  - 'etc etc etc etc etc etc etc etc etc etc etc etc etc etc etc etc'
+  - 'etc etc etc etc etc etc etc etc etc etc etc etc etc etc etc etc'
+  - 'etc etc etc etc etc etc etc etc etc etc etc etc etc etc etc etc'
+  - '***************************************************************'
 password:
 radius_servers:
   - 10.1.1.250
   - 10.1.1.252
-  - 10.1.1.252
+  - 10.1.1.253

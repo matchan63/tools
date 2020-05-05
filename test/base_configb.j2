@@ -1,10 +1,5 @@
 no ip domain-lookup
 ip domain-name {{ domain }}
-banner motd ^c
-{%- for motdline in motd %}
-{{ motdline }}
-{%- endfor %}
-^c
 aaa new-model
 aaa authentication login MYLIST group radius local
 line vty 0 4
