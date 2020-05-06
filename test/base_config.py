@@ -16,21 +16,23 @@ with open(filename) as f:
     initial_config = yaml.full_load(f)
 
 
-template_file = "base_configb.j2"
+template_file = "base_configa.j2"
 with open(template_file) as f:
     config_template = f.read()
 
+print('Enter radius shared secret: ')
 initial_config['password'] = getpass()
 
 template = jinja2.Template(config_template)
 cmd = template.render(initial_config).splitlines()
-
+'''
 f = open("commands.txt", "w")
 cmd=map(lambda x:x+'\n', cmd)
 f.writelines(cmd)
 f.close()
-
+'''
 connection = Netmiko(**login)
-output = connection.send_config_from_file("commands.txt")
+output = connection.send_config_set(cmd, cmd_verify = False)
+#output = connection.send_config_from_file("commands.txt")
 print(output)
 connection.disconnect()
